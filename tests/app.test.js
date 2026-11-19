@@ -2,6 +2,12 @@ const request = require('supertest');
 const app = require('../src/app');
 
 describe('TaskAPI', () => {
+  test('GET / returns app info', async () => {
+    const res = await request(app).get('/');
+    expect(res.statusCode).toBe(200);
+    expect(res.body.name).toBe('TaskAPI');
+  });
+
   test('GET /health returns ok', async () => {
     const res = await request(app).get('/health');
     expect(res.statusCode).toBe(200);
@@ -17,6 +23,11 @@ describe('TaskAPI', () => {
 
   test('POST /tasks without title returns 400', async () => {
     const res = await request(app).post('/tasks').send({});
+    expect(res.statusCode).toBe(400);
+  });
+
+  test('POST /tasks with blank title returns 400', async () => {
+    const res = await request(app).post('/tasks').send({ title: '   ' });
     expect(res.statusCode).toBe(400);
   });
 
