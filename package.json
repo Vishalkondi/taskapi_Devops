@@ -1,0 +1,13 @@
+{
+  "name": "taskapi",
+  "version": "1.0.0",
+  "description": "Beginner DevOps project: Node/Express to-do API with Docker + GitHub Actions CI/CD to AWS EC2",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "test": "jest --forceExit"
+  },
+  "license": "ISC",
+  "dependencies": { "express": "^4.19.2" },
+  "devDependencies": { "jest": "^29.7.0", "supertest": "^7.0.0" }
+}
